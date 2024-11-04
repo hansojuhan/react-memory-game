@@ -2,9 +2,15 @@ export default (state, action) => {
   switch (action.type) {
 
     case 'CLICK_CARD':
+
+      const uniqueClick = action.payload !== state.lastClickId;
+      const newScore = uniqueClick ? state.score++ : 0;
+      const newBestScore = uniqueClick && newScore > state.bestScore ? newScore : state.bestScore;
+
       return {
         ...state,
-        score: action.payload !== state.lastClickId ? state.score++ : 0,
+        score: newScore,
+        bestScore: newBestScore,
         lastClickId: action.payload
       }
 

@@ -14,7 +14,7 @@ export default function CardContainer() {
   return (
     <div className="flex flex-wrap justify-evenly mt-32 my-8">
       {shuffledCards.map((card) => (
-        <Card key={card.id} source={card.image} />
+        <Card key={card.id} id={card.id} source={card.image} />
       ))}
 
     </div>

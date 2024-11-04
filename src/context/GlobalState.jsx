@@ -17,7 +17,8 @@ const initialState = {
     { id: 12, image: 'src/assets/gifs/12.webp' }
   ],
   score: 0,
-  bestScore: 0
+  bestScore: 0,
+  lastClickId: null
 }
 
 export const GlobalContext = createContext(initialState);
@@ -25,9 +26,18 @@ export const GlobalContext = createContext(initialState);
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
+  // Actions (currently just one, click on card)
+  function clickCard(id) {
+    dispatch({
+      type: 'CLICK_CARD',
+      payload: id
+    });
+  }
+
   return (
     <GlobalContext.Provider value={{
-      cards: state.cards
+      ...state, // Spread all properties of state into the context value
+      clickCard // Click card action
     }}>
       {children}
     </GlobalContext.Provider>

@@ -1,6 +1,16 @@
 export default (state, action) => {
   switch (action.type) {
 
+    case 'SET_CARD':
+      return {
+        ...state,
+        cards: state.cards.map(card => 
+          card.id === action.payload.id
+          ? { ...card, image: action.payload.imageUrl }
+          : card
+        ) 
+      }
+
     case 'CLICK_CARD':
 
       const uniqueClick = action.payload !== state.lastClickId;

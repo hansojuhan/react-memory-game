@@ -1,6 +1,6 @@
 export default function Header() {
   return (
-    <header className="w-full flex items-center justify-between bg-slate-700 py-8 px-4 border-b-2 border-b-slate-400 shadow-black">
+    <header className="fixed top-0 z-50 w-full flex items-center justify-between bg-slate-700 py-8 px-4 border-b-2 border-b-slate-400 shadow-black">
       <div className="flex flex-col justify-evenly gap-2">
         <h1 className="text-4xl">Memory Game</h1>
         <p>Click on an image, but not more than once!</p>
